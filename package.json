@@ -1,0 +1,32 @@
+{
+  "name": "electron-spectron-example",
+  "version": "1.0.0",
+  "description": "Example test automation of electron app using spectron",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StephenDavidson/electron-spectron-example.git"
+  },
+  "keywords": [
+    "example",
+    "spectron",
+    "electron",
+    "selenium"
+  ],
+  "author": "Stephen Davidson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/StephenDavidson/electron-spectron-example/issues"
+  },
+  "homepage": "https://github.com/StephenDavidson/electron-spectron-example#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "electron-prebuilt": "^1.2.3",
+    "mocha": "^2.5.3",
+    "spectron": "^3.2.3"
+  }
+}
