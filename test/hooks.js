@@ -17,7 +17,6 @@ beforeEach(function () {
 
     return this.app.start().then(function (app) {
         chaiAsPromised.transferPromiseness = app.transferPromiseness;
-        console.log(app);
         return app
     })
 });
