@@ -3,8 +3,10 @@ var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
 var electron = require('electron-prebuilt');
 
-chai.should();
-chai.use(chaiAsPromised);
+global.before(function () {
+    chai.should()
+    chai.use(chaiAsPromised)
+});
 
 beforeEach(function () {
     this.app = new Application({

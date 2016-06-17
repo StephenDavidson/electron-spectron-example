@@ -1,6 +1,7 @@
 require('./hooks');
 
 describe('Sample Test', function () {
+    this.timeout(10000);
 
     it('opens a window', function () {
         return this.app.client.waitUntilWindowLoaded()
