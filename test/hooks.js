@@ -9,7 +9,6 @@ global.before(function () {
 });
 
 beforeEach(function () {
-    this.timeout(10000);
     this.app = new Application({
         path: electron,
         args: ['electron-app']
