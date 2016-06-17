@@ -13,11 +13,10 @@ beforeEach(function () {
         path: electron,
         args: ['electron-app']
     });
-    return this.app.start()
-});
-
-beforeEach(function () {
-    chaiAsPromised.transferPromiseness = this.app.transferPromiseness
+    return this.app.start().then(function (app) {
+        chaiAsPromised.transferPromiseness = app.transferPromiseness;
+        return app
+    })
 });
 
 afterEach(function () {
