@@ -2,14 +2,12 @@ os:
   - linux
   - osx
 
-branches:
-  only:
-    - master
+language: node_js
 
-env:
-  - NODE_VERSION="4.2.1"
+node_js:
+  - "node"
 
-script: ./script/travis-build.sh
+before_script: ./script/travis-build.sh
 
 cache:
   directories:
