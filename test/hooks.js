@@ -1,27 +1,30 @@
-var Application = require('spectron').Application;
-var chai = require('chai');
-var chaiAsPromised = require('chai-as-promised');
-var electron = require('electron-prebuilt');
+const Application = require('spectron').Application;
+const assert = require('assert');
+const chai = require('chai');
+const chaiAsPromised = require('chai-as-promised');
+const electron = require('electron');
 
-global.before(function () {
+global.before(() => {
     chai.should();
     chai.use(chaiAsPromised);
 });
 
-beforeEach(function () {
-    this.app = new Application({
-        path: electron,
-        args: ['electron-app']
-    });
+module.exports = {
+  startApp() {
+    const opts = {
+      path: electron,
+      args: ['electron-app']
+    };
 
-    return this.app.start().then(function (app) {
-        chaiAsPromised.transferPromiseness = app.transferPromiseness;
-        return app
+    const app = new Application(opts);
+
+    return app.start().then((app) => {
+      chaiAsPromised.transferPromiseness = app.transferPromiseness;
+      return app
     })
-});
+  },
 
-afterEach(function () {
-    if (this.app && this.app.isRunning()) {
-        return this.app.stop()
-    }
-});
+  stopApp(app) {
+    return app.stop()
+  }
+};

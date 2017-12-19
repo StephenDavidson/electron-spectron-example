@@ -1,22 +1,30 @@
-require('./hooks');
+const hooks = require('./hooks');
 
-describe('Sample Test', function () {
-    this.timeout(10000);
+describe('Sample Test', () => {
+    let app;
 
-    it('opens a window', function () {
-        return this.app.client.waitUntilWindowLoaded()
+    beforeEach(() => {
+        return hooks.startApp().then((startedApp) => { app = startedApp });
+    });
+
+    afterEach(() => {
+        return hooks.stopApp(app)
+    });
+
+    it('opens a window', () => {
+        return app.client.waitUntilWindowLoaded()
             .getWindowCount().should.eventually.equal(1)
     });
 
-    it('should get a url', function() {
-        return this.app.client.url('https://duckduckgo.com')
+    it('should get a url', () => {
+        return app.client.url('https://duckduckgo.com')
             .getTitle()
             .should.eventually.equal('DuckDuckGo')
     });
 
-    it('should search', function() {
-        var input = 'this is a test';
-        return this.app.client.url('https://duckduckgo.com')
+    it('should search', () => {
+        const input = 'this is a test';
+        return app.client.url('https://duckduckgo.com')
             .setValue('#search_form_input_homepage', input)
             .getValue("#search_form_input_homepage")
             .should.eventually.equal(input)
