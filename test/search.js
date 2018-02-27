@@ -19,7 +19,7 @@ describe('Sample Test', () => {
     it('should get a url', () => {
         return app.client.url('https://duckduckgo.com')
             .getTitle()
-            .should.eventually.equal('DuckDuckGo')
+            .should.eventually.equal('DuckDuckGo Search Engine')
     });
 
     it('should search', () => {
