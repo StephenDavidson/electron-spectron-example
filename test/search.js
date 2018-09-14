@@ -1,4 +1,5 @@
 const hooks = require('./hooks');
+const config = require('../config').get(process.env.NODE_ENV);
 const SearchPage = require('./page-objects/search.page');
 
 describe('Sample Test', () => {
@@ -19,14 +20,14 @@ describe('Sample Test', () => {
   });
 
   it('should get a url', async() => {
-    await app.client.url('https://duckduckgo.com')
+    await app.client.url(config.url)
       .getTitle()
       .should.eventually.include('DuckDuckGo');
   });
 
   it('should search', async() => {
     const input = 'this is a test';
-    await app.client.url('https://duckduckgo.com')
+    await app.client.url(config.url)
       .setValue(SearchPage.searchField, input)
       .getValue(SearchPage.searchField)
       .should.eventually.equal(input)
