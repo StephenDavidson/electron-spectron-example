@@ -1,5 +1,4 @@
 const Application = require('spectron').Application;
-const assert = require('assert');
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 const electron = require('electron');
@@ -11,12 +10,10 @@ global.before(() => {
 
 module.exports = {
   startApp() {
-    const opts = {
-      path: electron,
-      args: ['electron-app']
-    };
-
-    const app = new Application(opts);
+    const app = new Application({
+        path: electron,
+        args: ['electron-app']
+    });
 
     return app.start().then((app) => {
       chaiAsPromised.transferPromiseness = app.transferPromiseness;
@@ -25,6 +22,8 @@ module.exports = {
   },
 
   stopApp(app) {
-    return app.stop()
+    if (app && app.isRunning()) {
+      return app.stop()
+    }
   }
 };

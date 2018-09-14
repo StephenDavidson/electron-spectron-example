@@ -8,18 +8,18 @@ describe('Sample Test', () => {
     });
 
     afterEach(() => {
-        return hooks.stopApp(app)
+        return hooks.stopApp(app);
     });
 
     it('opens a window', () => {
         return app.client.waitUntilWindowLoaded()
-            .getWindowCount().should.eventually.equal(1)
+            .getWindowCount().should.eventually.equal(1);
     });
 
     it('should get a url', () => {
         return app.client.url('https://duckduckgo.com')
             .getTitle()
-            .should.eventually.equal('DuckDuckGo Search Engine')
+            .should.eventually.include('DuckDuckGo');
     });
 
     it('should search', () => {
@@ -30,7 +30,7 @@ describe('Sample Test', () => {
             .should.eventually.equal(input)
             .click('#search_button_homepage')
             .element('.result__a')
-            .should.eventually.exist
+            .should.eventually.exist;
     });
 
 });
