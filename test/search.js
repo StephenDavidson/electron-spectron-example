@@ -1,4 +1,5 @@
 const hooks = require('./hooks');
+const SearchPage = require('./page-objects/search.page');
 
 describe('Sample Test', () => {
   let app;
@@ -26,11 +27,11 @@ describe('Sample Test', () => {
   it('should search', async() => {
     const input = 'this is a test';
     await app.client.url('https://duckduckgo.com')
-      .setValue('#search_form_input_homepage', input)
-      .getValue('#search_form_input_homepage')
+      .setValue(SearchPage.searchField, input)
+      .getValue(SearchPage.searchField)
       .should.eventually.equal(input)
-      .click('#search_button_homepage')
-      .element('.result__a')
+      .click(SearchPage.searchButton)
+      .element(SearchPage.searchResult)
       .should.eventually.exist;
   });
 
