@@ -8,10 +8,10 @@ Electron selenium testing using spectron.
 ```
 git clone https://github.com/StephenDavidson/electron-spectron-example
 cd electron-spectron-example
-yarn
+npm install
 ```
 
 # Running Tests
 ```
-yarn test
+npm test
 ```
