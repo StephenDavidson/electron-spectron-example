@@ -1,38 +1,41 @@
-const hooks = require('./hooks');
-const config = require('../config').get(process.env.NODE_ENV);
-const SearchPage = require('./page-objects/search.page');
+import { startApp, stopApp } from './hooks';
+import { searchPage } from './page-objects/search.page';
+import * as Config from '../config'
 
 describe('Sample Test', () => {
+  const config = Config.get(process.env.NODE_ENV);
   let app;
 
   beforeEach(async () => {
-    app = await hooks.startApp();
+    app = await startApp();
   });
 
   afterEach(async() => {
-    await hooks.stopApp(app);
+    await stopApp(app);
   });
 
   it('opens a window', async() => {
-    await app.client.waitUntilWindowLoaded()
-      .getWindowCount()
+    app.client.waitUntilWindowLoaded()
+    app.client.getWindowCount()
       .should.eventually.equal(1);
   });
 
   it('should get a url', async() => {
-    await app.client.url(config.url)
-      .getTitle()
+    app.client.url(config.url)
+    app.client.getTitle()
       .should.eventually.include('DuckDuckGo');
   });
 
   it('should search', async() => {
     const input = 'this is a test';
-    await app.client.url(config.url)
-      .setValue(SearchPage.searchField, input)
-      .getValue(SearchPage.searchField)
+    app.client.url(config.url)
+    const inputEl = await (app.client.$(searchPage.searchField))
+    inputEl.setValue(input)
+    inputEl.getValue()
       .should.eventually.equal(input)
-      .click(SearchPage.searchButton)
-      .element(SearchPage.searchResult)
+    const searchButton = await (app.client.$(searchPage.searchButton))
+    searchButton.click()
+    app.client.$(searchPage.searchResult)
       .should.eventually.exist;
   });
 

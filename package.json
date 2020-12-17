@@ -4,7 +4,7 @@
   "description": "Example test automation of electron app using spectron",
   "main": "index.js",
   "scripts": {
-    "test": "node ./node_modules/mocha/bin/_mocha",
+    "test": "node ./node_modules/mocha/bin/_mocha --require esm --timeout 20000",
     "lint": "node ./node_modules/.bin/eslint ."
   },
   "repository": {
@@ -24,14 +24,15 @@
   },
   "homepage": "https://github.com/StephenDavidson/electron-spectron-example#readme",
   "devDependencies": {
-    "chai": "^4.1.2",
+    "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "electron": "^7.2.4",
-    "eslint": "^5.5.0",
-    "mocha": "^5.2.0",
-    "spectron": "^8.0.0"
+    "electron": "^11.1.0",
+    "eslint": "^7.15.0",
+    "esm": "^3.2.25",
+    "mocha": "^8.2.1",
+    "spectron": "^13.0.0"
   },
   "engines": {
-    "node": "^8.12.0"
+    "node": "^12.0.0"
   }
 }
