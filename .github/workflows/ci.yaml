@@ -1,7 +1,13 @@
 on: push
 jobs:
-  steps:
-  - uses: actions/checkout@v2
-  - run: npm install
-  - run: sudo apt-get install xvfb
-  - run: xvfb-run --auto-servernum npm test
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v2.1.5
+      with:
+        node-version: 14.x
+    - run: npm install
+    - run: sudo apt-get install xvfb
+    - run: xvfb-run --auto-servernum npm test
