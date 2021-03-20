@@ -25,12 +25,11 @@
   "homepage": "https://github.com/StephenDavidson/electron-spectron-example#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "chai-as-promised": "^7.1.1",
-    "electron": "^11.1.0",
+    "electron": "^12.0.1",
     "eslint": "^7.15.0",
     "esm": "^3.2.25",
     "mocha": "^8.2.1",
-    "spectron": "^13.0.0"
+    "spectron": "^14.0.0"
   },
   "engines": {
     "node": "^14.15.2"

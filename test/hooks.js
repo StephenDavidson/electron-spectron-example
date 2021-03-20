@@ -1,11 +1,9 @@
 import { Application } from 'spectron';
-import { should, use } from 'chai';
-import chaiAsPromised from 'chai-as-promised';
+import { should } from 'chai';
 import electron from 'electron';
 
 global.before(() => {
   should();
-  use(chaiAsPromised);
 });
 
 export async function startApp() {
@@ -13,7 +11,6 @@ export async function startApp() {
     path: electron,
     args: ['electron-app']
   })
-  chaiAsPromised.transferPromiseness = app.transferPromiseness;
   return app.start();
 }
 

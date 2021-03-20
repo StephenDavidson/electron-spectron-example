@@ -9,7 +9,8 @@ app.on('ready', () => {
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
-    }
+    },
+    title: 'My Awesome App',
   });
 
   mainWindow.loadURL('file://' + __dirname + '/index.html');

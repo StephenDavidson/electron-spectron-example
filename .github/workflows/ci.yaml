@@ -1,0 +1,7 @@
+on: push
+jobs:
+  steps:
+  - uses: actions/checkout@v2
+  - run: npm install
+  - run: sudo apt-get install xvfb
+  - run: xvfb-run --auto-servernum npm test
