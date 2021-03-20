@@ -1,7 +1,7 @@
 # electron-spectron-example
 Electron selenium testing using spectron.
 
-[![Build Status](https://travis-ci.org/StephenDavidson/electron-spectron-example.svg?branch=master)](https://travis-ci.org/StephenDavidson/electron-spectron-example)
+[![Build Status](https://github.com/StephenDavidson/electron-spectron-example/actions/workflows/ci.yaml/badge.svg)
 
 # Setup
 
