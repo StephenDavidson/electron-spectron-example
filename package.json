@@ -25,7 +25,7 @@
   "homepage": "https://github.com/StephenDavidson/electron-spectron-example#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "electron": "^12.0.1",
+    "electron": "^12.1.0",
     "eslint": "^7.15.0",
     "esm": "^3.2.25",
     "mocha": "^8.2.1",
